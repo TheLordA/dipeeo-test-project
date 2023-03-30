@@ -1,5 +1,5 @@
 import { getProducts, getProductsSuccess, getProductsFailure } from "./productSlice";
-import { getPokemonsAPI } from "../../../api/pokemonAPI";
+import { getPokemonsAPI } from "../../../api/pokemonApi";
 
 export const fetchPokemons = () => async dispatch => {
 	try {
