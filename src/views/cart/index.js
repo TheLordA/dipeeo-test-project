@@ -99,7 +99,7 @@ const Cart = () => {
 					</Button>
 				</Col>
 				<Col>
-					<Button type="default" onClick={handleEmptyCart} danger>
+					<Button type="default" onClick={handleEmptyCart} danger disabled={quantiteTotale === 0}>
 						<DeleteOutlined />
 						&nbsp;
 						<span>Delete Cart</span>

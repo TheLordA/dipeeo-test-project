@@ -5,6 +5,8 @@ import { List } from "antd";
 
 import { fetchPokemons } from "../../store/features/product/productActions";
 
+import "./index.css";
+
 const Home = () => {
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
@@ -17,7 +19,7 @@ const Home = () => {
 	}, [dispatch, products]);
 
 	return (
-		<div style={{ marginBottom: 100 }}>
+		<div className="homePage-container">
 			<List
 				grid={{ gutter: 15, column: 4 }}
 				loading={loading}

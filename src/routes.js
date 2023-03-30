@@ -1,6 +1,5 @@
 import AppLayout from "./layout";
 import Home from "./views/home";
-import Checkout from "./views/checkout";
 import ProductDetail from "./views/productDetail";
 import Cart from "./views/cart";
 import NotFound from "./views/notFound";
@@ -17,10 +16,6 @@ const routes = [
 			{
 				path: ":productId",
 				element: <ProductDetail />
-			},
-			{
-				path: "checkout",
-				element: <Checkout />
 			},
 			{
 				path: "cart",

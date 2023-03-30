@@ -1,24 +1,21 @@
-import React from "react";
-import { theme, Button } from "antd";
-import { useDispatch } from "react-redux";
+import { Button, Col, Modal, Row } from "antd";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { Modal } from "antd";
-import { ExclamationCircleOutlined } from "@ant-design/icons";
+import { ExclamationCircleOutlined, DoubleLeftOutlined, ShoppingCartOutlined } from "@ant-design/icons";
 import { addItem } from "../../store/features/cart/cartSlice";
 
 import ProductDetailCard from "../../components/productDetailCard";
+
+import "./index.css";
 
 const ProductDetail = () => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	let { productId } = useParams();
 	const { products } = useSelector(state => state.product);
-	const {
-		token: { colorBgContainer }
-	} = theme.useToken();
+
 	const pokemon = products.filter(pokemon => pokemon.id === productId)[0];
-	console.log("##", pokemon);
+
 	const handleShopCart = () => {
 		dispatch(
 			addItem({
@@ -34,17 +31,32 @@ const ProductDetail = () => {
 			okText: "Continue Shopping",
 			cancelText: "Proceed to Checkout",
 			onOk: () => navigate("/"),
-			onCancel: () => navigate("/checkout")
+			onCancel: () => navigate("/cart")
 		});
 	};
 
 	return (
-		<div style={{ padding: 24, textAlign: "center", background: colorBgContainer, marginBottom: 80 }}>
-			<div style={{ display: "flex", justifyContent: "space-around", alignItems: "center", marginBottom: 20 }}>
+		<div className="productDetail_container">
+			<div className="productDetail_container-details">
 				<img src={pokemon?.images?.small} alt={pokemon.name} />
 				<ProductDetailCard pokemon={pokemon} />
 			</div>
-			<Button onClick={handleShopCart}>Add to cart</Button>
+			<Row justify="space-around">
+				<Col>
+					<Button type="default" onClick={() => navigate("/")}>
+						<DoubleLeftOutlined />
+						&nbsp;
+						<span>Return to shop</span>
+					</Button>
+				</Col>
+				<Col>
+					<Button type="primary" onClick={handleShopCart}>
+						<ShoppingCartOutlined />
+						&nbsp;
+						<span>Add to cart</span>
+					</Button>
+				</Col>
+			</Row>
 		</div>
 	);
 };

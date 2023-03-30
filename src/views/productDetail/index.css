@@ -1,0 +1,12 @@
+.productDetail_container{
+  padding: 24px; 
+  text-align: center; 
+  background: white; 
+  margin-bottom: 80px
+}
+.productDetail_container-details{
+  display: flex; 
+  justify-content: space-around; 
+  align-items: center; 
+  margin-bottom: 20px
+}
